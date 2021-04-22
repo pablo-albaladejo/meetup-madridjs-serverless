@@ -1,0 +1,19 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.73",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "clean": "rimraf dist",
+    "predeploy": "yarn compile",
+    "deploy": "sls deploy",
+    "postdeploy": "yarn clean",
+    "clean-deploy": "sls remove"
+  }
+}

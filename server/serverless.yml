@@ -1,0 +1,35 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: contacts
+
+frameworkVersion: '2'
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+# The `functions` block defines what code to deploy
+functions:
+  getContacts:
+    handler: ./dist/index.handlerGetContacts
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: contact
+          method: get
+          cors: true
+
+  findByName:
+    handler: ./dist/index.handlerFindByName
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: contact/{name}
+          method: get
+          cors: true
